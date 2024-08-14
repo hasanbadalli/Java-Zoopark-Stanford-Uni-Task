@@ -14,11 +14,11 @@ public abstract class Animal {
     private int lifeExpectancy;
     private Enclosures enclosure;
 
-    public Animal(int age, Gender gender, String[] eats, int health, int lifeExpectancy) {
-        this.age = age;
+    public Animal(Gender gender, String[] eats,int lifeExpectancy) {
+        this.age = 0;
+        this.health = 10;
         this.gender = gender;
         this.eats = eats;
-        this.health = health;
         this.lifeExpectancy = lifeExpectancy;
     }
 
@@ -61,4 +61,5 @@ public abstract class Animal {
 
     public abstract boolean aMonthPasses();
 
+    public abstract void treat();
 }
