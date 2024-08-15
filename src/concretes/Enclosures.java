@@ -32,6 +32,11 @@ public class Enclosures {
         }
     }
 
+    public void addWaste(int amount) {
+        waste += amount;
+    }
+
+
     public FoodStore getFoodStore(){
         return foodStore;
     }

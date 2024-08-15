@@ -53,11 +53,37 @@ public abstract class Animal {
         return null;
     }
 
-    public void eat(String food){}
+    public void eat(){
 
-    public void decraseHealth(int health){}
+        try{
+            FoodStore foodStore = getFoodStore();
+            if(foodStore == null){
+                System.out.println("No food store avialable for this animal enclosure");
+                return;
+            }
 
-    public void treat(String food){}
+            for (String food : eats) {
+                if(foodStore.getFoodQuantity(food) > 0){
+                    foodStore.takeFood(food);
+                    health += foodStore.getHealthValue(food);
+                    enclosure.addWaste(foodStore.getWasteValue(food));
+                    System.out.println("Animal eaten " + food + " Health increase: " + foodStore.getHealthValue(food) + " waste: " + foodStore.getWasteValue(food));
+                }
+            }
+
+
+            System.out.println("No suitable food available for this animal to eat.");
+
+        }catch (IllegalAccessError e){
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+
+    public void decraseHealth(){
+        health -= 2;
+    }
 
     public abstract boolean aMonthPasses();
 
