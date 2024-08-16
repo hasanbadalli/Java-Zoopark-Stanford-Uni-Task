@@ -16,6 +16,11 @@ public class Gorilla extends Ape {
 
     @Override
     public void treat() {
-
+        painting();
     }
+
+    public void painting(){
+        super.increaseHealth(4);
+    }
+
 }

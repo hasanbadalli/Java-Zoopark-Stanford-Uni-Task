@@ -17,8 +17,5 @@ public class Lion extends BigCat {
         return true;
     }
 
-    @Override
-    public void treat() {
 
-    }
 }

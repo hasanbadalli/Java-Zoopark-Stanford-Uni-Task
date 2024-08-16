@@ -85,6 +85,10 @@ public abstract class Animal {
         health -= 2;
     }
 
+    public void increaseHealth(int value){
+        health += value;
+    }
+
     public abstract boolean aMonthPasses();
 
     public abstract void treat();

@@ -16,8 +16,8 @@ public class Tiger extends BigCat {
     }
 
     @Override
-    public void treat() {
-
+    public void stroked() {
+        super.increaseHealth(3);
     }
 
 }

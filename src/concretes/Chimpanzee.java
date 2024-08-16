@@ -16,6 +16,11 @@ public class Chimpanzee extends Ape {
 
     @Override
     public void treat() {
-
+        playChase();
     }
+
+    public void playChase(){
+        super.increaseHealth(4);
+    }
+
 }

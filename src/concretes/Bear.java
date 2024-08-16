@@ -15,6 +15,11 @@ public class Bear extends Animal {
 
     @Override
     public void treat() {
-
+        hug();
     }
+
+    public void hug(){
+        super.increaseHealth(2);
+    }
+
 }

@@ -16,6 +16,11 @@ public class Penguin extends Animal {
 
     @Override
     public void treat() {
-
+        watchaFilm();
     }
+
+    public void watchaFilm(){
+        super.increaseHealth(2);
+    }
+
 }

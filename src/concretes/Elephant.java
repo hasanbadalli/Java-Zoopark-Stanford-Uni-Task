@@ -16,6 +16,11 @@ public class Elephant extends Animal {
 
     @Override
     public void treat() {
-
+        bath();
     }
+
+    public void bath(){
+        super.increaseHealth(5);
+    }
+
 }

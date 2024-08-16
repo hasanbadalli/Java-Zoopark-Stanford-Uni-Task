@@ -16,6 +16,11 @@ public class Giraffe extends Animal {
 
     @Override
     public void treat() {
-
+        neckMassage();
     }
+
+    public void neckMassage(){
+        super.increaseHealth(4);
+    }
+
 }
