@@ -77,4 +77,8 @@ public class Enclosure {
         System.out.println("---");
     }
 
+
+    public List<Animal> getAnimals() {
+        return animals;
+    }
 }

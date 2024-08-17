@@ -1,22 +1,41 @@
 package concretes;
 
+import java.util.List;
+
 public class Zoo {
-    private Enclosure[] enclosures;
+    private List<Enclosure> enclosures;
+    private List<Zookeeper> zookeepers;
     private FoodStore foodStore;
 
-    public Zoo(Enclosure[] enclosures) {
+    public Zoo(List<Enclosure> enclosures, List<Zookeeper> zookeepers) {
         this.enclosures = enclosures;
-        this.foodStore = new FoodStore();
+        this.zookeepers = zookeepers;
     }
 
     public void aMonthPasses(){
+        int next = 1;
         for (Enclosure enclosure : enclosures) {
             System.out.println("-------------------");
+            System.out.println(next+". Enclosure");
+            next++;
             enclosure.aMonthPasses();
             System.out.println("-------------------");
         }
 
-        restockFood();
+        next =1;
+        for (Zookeeper zookeeper : zookeepers) {
+            System.out.println("-------------------");
+            System.out.println(next+". Zookeeper");
+            next++;
+            zookeeper.aMonthPasses();
+            System.out.println("-------------------");
+        }
+
+        //restockFood();
+    }
+
+    public void addZookeeper(Zookeeper zookeeper) {
+        zookeepers.add(zookeeper);
     }
 
     public void go(int months){

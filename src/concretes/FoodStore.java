@@ -1,7 +1,9 @@
 package concretes;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class FoodStore {
     private HashMap<String, Integer> foodStorage = new HashMap<>();
@@ -40,6 +42,15 @@ public class FoodStore {
         }
     }
 
+    public void takeFood(String food, int quantity) {
+        if (foodStorage.containsKey(food) && foodStorage.get(food) >= quantity) {
+            foodStorage.put(food, foodStorage.get(food) - quantity);
+        } else {
+            throw new IllegalArgumentException("Food is either not available or not enough in stock.");
+        }
+    }
+
+
     public int getHealthValue(String food) {
         return foodHealthValues.getOrDefault(food, 0);
     }
@@ -48,5 +59,15 @@ public class FoodStore {
     }
     public int getFoodQuantity(String food) {
         return foodStorage.getOrDefault(food, 0);
+    }
+
+    public List<String> getAvailableFoods() {
+        List<String> availableFoods = new ArrayList<>();
+        for (String food : foodStorage.keySet()) {
+            if (foodStorage.get(food) > 0) {
+                availableFoods.add(food);
+            }
+        }
+        return availableFoods;
     }
 }
