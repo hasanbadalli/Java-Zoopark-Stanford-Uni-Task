@@ -9,10 +9,7 @@ public class Giraffe extends Animal {
         super(gender, new String[]{"hay", "fruit"}, 28);
     }
 
-    @Override
-    public boolean aMonthPasses() {
-        return false;
-    }
+
 
     @Override
     public void treat() {
@@ -23,4 +20,21 @@ public class Giraffe extends Animal {
         super.increaseHealth(4);
     }
 
+    public boolean aMonthPasses(){
+        int age = getAge();
+        setAge(++age);
+
+
+        eat();
+        if(age > getLifeExpectancy() || getHealth() <= 0){
+            System.out.println("Sorry... Giraffe had died. Age: " + getAge() + " Health: " + getHealth());
+            return false;
+        }
+        System.out.println("Giraffe health: " + getHealth() + " age: " + getAge());
+        System.out.println();
+
+
+
+        return true;
+    }
 }

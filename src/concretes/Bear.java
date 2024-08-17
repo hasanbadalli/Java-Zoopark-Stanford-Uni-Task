@@ -8,10 +8,6 @@ public class Bear extends Animal {
         super(gender, new String[]{"fish", "steak"}, 18);
     }
 
-    @Override
-    public boolean aMonthPasses() {
-        return false;
-    }
 
     @Override
     public void treat() {
@@ -19,7 +15,26 @@ public class Bear extends Animal {
     }
 
     public void hug(){
-        super.increaseHealth(2);
+        increaseHealth(2);
+    }
+
+    @Override
+    public boolean aMonthPasses(){
+        int age = getAge();
+        setAge(++age);
+
+
+        eat();
+        if(age > getLifeExpectancy() || getHealth() <= 0){
+            System.out.println("Sorry... Bear had died. Age: " + getAge() + " Health: " + getHealth());
+            return false;
+        }
+        System.out.println("Bear health: " + getHealth() + " age: " + getAge());
+        System.out.println();
+
+
+
+        return true;
     }
 
 }

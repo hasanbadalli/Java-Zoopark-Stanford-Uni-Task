@@ -1,6 +1,6 @@
 package abstracts;
 
-import concretes.Enclosures;
+import concretes.Enclosure;
 import concretes.FoodStore;
 import enums.Gender;
 
@@ -12,7 +12,7 @@ public abstract class Animal {
     private String[] eats;
     private int health;
     private int lifeExpectancy;
-    private Enclosures enclosure;
+    private Enclosure enclosure;
 
     public Animal(Gender gender, String[] eats,int lifeExpectancy) {
         this.age = 0;
@@ -22,11 +22,11 @@ public abstract class Animal {
         this.lifeExpectancy = lifeExpectancy;
     }
 
-    public void setEnclosure(Enclosures enclosure) {
+    public void setEnclosure(Enclosure enclosure) {
         this.enclosure = enclosure;
     }
 
-    public Enclosures getEnclosures(){
+    public Enclosure getEnclosures(){
         return this.enclosure;
     }
 
@@ -38,6 +38,10 @@ public abstract class Animal {
         return age;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public int getLifeExpectancy() {
         return lifeExpectancy;
     }
@@ -47,10 +51,14 @@ public abstract class Animal {
     }
 
     public FoodStore getFoodStore(){
-        if(enclosure == null){
+        if(enclosure != null){
             return enclosure.getFoodStore();
         }
         return null;
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     public void eat(){
@@ -61,19 +69,28 @@ public abstract class Animal {
                 System.out.println("No food store avialable for this animal enclosure");
                 return;
             }
-
+            boolean hafeFood = false;
             for (String food : eats) {
                 if(foodStore.getFoodQuantity(food) > 0){
                     foodStore.takeFood(food);
                     health += foodStore.getHealthValue(food);
+                    if(health>10){
+                        health = 10;
+                    }
                     enclosure.addWaste(foodStore.getWasteValue(food));
-                    System.out.println("Animal eaten " + food + " Health increase: " + foodStore.getHealthValue(food) + " waste: " + foodStore.getWasteValue(food));
+                    System.out.println("Animal eat: " + food);
+                    hafeFood = true;
+                    break;
                 }
+
             }
 
 
-            System.out.println("No suitable food available for this animal to eat.");
 
+            if(!hafeFood){
+                decraseHealth();
+                System.out.println("Animal did not find suitable food and lost health.");
+            }
         }catch (IllegalAccessError e){
             System.out.println(e.getMessage());
         }

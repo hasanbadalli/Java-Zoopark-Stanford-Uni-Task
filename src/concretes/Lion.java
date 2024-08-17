@@ -13,9 +13,22 @@ public class Lion extends BigCat {
     }
 
     @Override
-    public boolean aMonthPasses() {
+    public boolean aMonthPasses(){
+        int age = getAge();
+        setAge(++age);
+
+
+        eat();
+        if(age > getLifeExpectancy() || getHealth() <= 0){
+            System.out.println("Sorry... Lion had died. Age: " + getAge() + " Health: " + getHealth());
+            return false;
+        }
+        System.out.println("Lion health: " + getHealth() + " age: " + getAge());
+        System.out.println();
+
+
+
         return true;
     }
-
 
 }

@@ -3,12 +3,20 @@ package concretes;
 import abstracts.Animal;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class Enclosures {
+public class Enclosure {
     private FoodStore foodStore = new FoodStore();
     private int waste = 0;
 
-    ArrayList<Animal> animals = new ArrayList<>();
+    private List<Animal> animals;
+
+    public Enclosure(List<Animal> animals) {
+        this.animals = animals;
+    }
+
+
 
 
     public void addAnimal(Animal animal) {
@@ -27,6 +35,7 @@ public class Enclosures {
     public void removeWaste(int amount) {
         if (waste >= amount) {
             waste -= amount;
+            System.out.println("Waste removed.");
         }else{
             System.out.println("Not enough waste to remove!");
         }
@@ -49,9 +58,23 @@ public class Enclosures {
         return animals.size();
     }
 
+
     public void aMonthPasses(){
-        //TODO
-        animals.forEach(Animal::aMonthPasses);
+        Iterator<Animal> iterator = animals.iterator();
+        while (iterator.hasNext()) {
+            Animal animal = iterator.next();
+            animal.aMonthPasses();
+
+
+            if(animal.getHealth() <= 0 || animal.getAge() > animal.getLifeExpectancy()) {
+                iterator.remove();
+            }
+        }
+
+        System.out.println("---");
+        System.out.println("Waste " + waste);
+        removeWaste(getWasteSize());
+        System.out.println("---");
     }
 
 }

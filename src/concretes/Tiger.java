@@ -10,14 +10,28 @@ public class Tiger extends BigCat {
         super(gender);
     }
 
-    @Override
-    public boolean aMonthPasses() {
-        return false;
-    }
 
     @Override
     public void stroked() {
-        super.increaseHealth(3);
+        increaseHealth(3);
+    }
+
+    public boolean aMonthPasses(){
+        int age = getAge();
+        setAge(++age);
+
+
+        eat();
+        if(age > getLifeExpectancy() || getHealth() <= 0){
+            System.out.println("Sorry... Tiger had died. Age: " + getAge() + " Health: " + getHealth());
+            return false;
+        }
+        System.out.println("Tiger health: " + getHealth() + " age: " + getAge());
+        System.out.println();
+
+
+
+        return true;
     }
 
 }

@@ -9,10 +9,6 @@ public class Penguin extends Animal {
         super(gender, new String[]{"fish", "ice cream"}, 15);
     }
 
-    @Override
-    public boolean aMonthPasses() {
-        return false;
-    }
 
     @Override
     public void treat() {
@@ -21,6 +17,25 @@ public class Penguin extends Animal {
 
     public void watchaFilm(){
         super.increaseHealth(2);
+    }
+
+    @Override
+    public boolean aMonthPasses(){
+        int age = getAge();
+        setAge(++age);
+
+
+        eat();
+        if(age > getLifeExpectancy() || getHealth() <= 0){
+            System.out.println("Sorry... Penguin had died. Age: " + getAge() + " Health: " + getHealth());
+            return false;
+        }
+        System.out.println("Penguin health: " + getHealth() + " age: " + getAge());
+        System.out.println();
+
+
+
+        return true;
     }
 
 }
