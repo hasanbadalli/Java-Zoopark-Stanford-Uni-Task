@@ -13,6 +13,8 @@ public class Zookeeper {
         this.zooFoodStore = zooFoodStore;
     }
 
+    public Zookeeper(){}
+
     public void aMonthPasses() {
 
         moveFood();
@@ -21,6 +23,14 @@ public class Zookeeper {
         removeWaste();
 
         treatAnimals();
+    }
+
+    public void setEnclosure(Enclosure enclosure) {
+        this.enclosure = enclosure;
+    }
+
+    public void setZooFoodStore(FoodStore zooFoodStore) {
+        this.zooFoodStore = zooFoodStore;
     }
 
     protected void moveFood() {

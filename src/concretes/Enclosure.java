@@ -17,7 +17,9 @@ public class Enclosure {
     }
 
 
-
+    public Enclosure(int waste) {
+        this.waste = waste;
+    }
 
     public void addAnimal(Animal animal) {
         if (animals.size() < 20) {
